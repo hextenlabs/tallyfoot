@@ -2,8 +2,6 @@
 title: StrideRing Support
 ---
 
-# StrideRing Support
-
 Need help or found a bug? [Open an issue](https://github.com/jeremywho/stridering-site/issues) and describe what you saw, and on which device.
 
 ## Common questions

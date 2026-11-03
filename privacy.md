@@ -2,8 +2,6 @@
 title: StrideRing Privacy Policy
 ---
 
-# StrideRing Privacy Policy
-
 *Effective November 3, 2026*
 
 StrideRing doesn't collect any data about you. There are no accounts, no ads, no analytics and no tracking, and the app makes no network connections to the developer or anyone else.
