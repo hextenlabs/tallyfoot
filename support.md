@@ -2,7 +2,7 @@
 title: Tallyfoot Support
 ---
 
-Need help or found a bug? [Open an issue](https://github.com/jeremywho/tallyfoot-site/issues) and describe what you saw, and on which device.
+Need help or found a bug? [Open an issue](https://github.com/hextenlabs/tallyfoot/issues) and describe what you saw, and on which device.
 
 ## Common questions
 

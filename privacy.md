@@ -27,4 +27,4 @@ If this policy changes, the new version will be posted on this page with a new e
 
 ## Contact
 
-Questions? [Open an issue](https://github.com/jeremywho/tallyfoot-site/issues).
+Questions? [Open an issue](https://github.com/hextenlabs/tallyfoot/issues).
