@@ -238,34 +238,6 @@ main > section + section {
   margin-top: var(--s5);
 }
 
-.widgets {
-  display: grid;
-  grid-template-columns: minmax(0, 220px) minmax(0, 1fr);
-  gap: var(--s4);
-  align-items: end;
-}
-
-.shot.widget-small {
-  border-radius: 13%;
-}
-
-.lock-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 2.26fr);
-  align-items: center;
-  gap: var(--s2);
-}
-
-.shot.widget-circular {
-  border-radius: 50%;
-  padding: 4%;
-}
-
-.shot.widget-rect {
-  padding: 3% 4%;
-  border-radius: 7% / 16%;
-}
-
 .prose h2 {
   max-width: 20em;
 }
@@ -337,19 +309,6 @@ main > section + section {
 
   .pair {
     gap: var(--s2);
-  }
-
-  .widgets {
-    grid-template-columns: minmax(0, 1fr);
-    justify-items: center;
-  }
-
-  .widget-home {
-    width: 60%;
-  }
-
-  .widget-lock {
-    width: 100%;
   }
 
   .site-footer {
