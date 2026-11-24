@@ -1,2 +1,4 @@
 title: Tallyfoot
 theme: minima
+exclude:
+  - DESIGN.md
