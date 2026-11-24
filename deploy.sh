@@ -15,19 +15,31 @@ echo "== upload $sha to $host"
 git archive --format=tar HEAD | ssh "$host" '
   set -e
   rm -rf ~/tallyfoot/src
-  mkdir -p ~/tallyfoot/src ~/tallyfoot/site ~/tallyfoot/gems
+  mkdir -p ~/tallyfoot/src ~/tallyfoot/site
   tar -x -C ~/tallyfoot/src
 '
 
 echo "== build and publish on $host"
 ssh "$host" bash -s <<'REMOTE'
 set -euo pipefail
-gems="jekyll:3.10.0 minima:2.5.1 jekyll-seo-tag:2.8.0 jekyll-feed:0.17.0 kramdown:2.4.0 kramdown-parser-gfm:1.1.0 jekyll-sass-converter:1.5.2 sass:3.7.4 rouge:3.30.0 liquid:4.0.4 webrick"
+cat > ~/tallyfoot/Gemfile <<'GEMS'
+source "https://rubygems.org"
+gem "jekyll", "3.10.0"
+gem "minima", "2.5.1"
+gem "jekyll-seo-tag", "2.8.0"
+gem "jekyll-feed", "0.17.0"
+gem "jekyll-sass-converter", "1.5.2"
+gem "sass", "3.7.4"
+gem "kramdown", "2.4.0"
+gem "kramdown-parser-gfm", "1.1.0"
+gem "rouge", "3.30.0"
+gem "liquid", "4.0.4"
+GEMS
 rm -rf ~/tallyfoot/site/*
 docker run --rm --cpus 1 --user "$(id -u):$(id -g)" \
-  -e HOME=/tmp -e GEM_HOME=/gems -e PATH=/gems/bin:/usr/local/bin:/usr/bin:/bin \
-  -v ~/tallyfoot/gems:/gems -v ~/tallyfoot/src:/src -v ~/tallyfoot/site:/out \
-  ruby:3.3.4 sh -c "gem install --conservative --no-document $gems >/dev/null && cd /src && jekyll build -s /src -d /out --config _config.yml,_config.tallyfoot-com.yml"
+  -e HOME=/tmp -e BUNDLE_GEMFILE=/build/Gemfile -e BUNDLE_PATH=/build/gems \
+  -v ~/tallyfoot:/build \
+  ruby:3.3.4 sh -c "bundle install --quiet && cd /build/src && bundle exec jekyll build -s /build/src -d /build/site --config _config.yml,_config.tallyfoot-com.yml"
 test -s ~/tallyfoot/site/index.html
 test -s ~/tallyfoot/site/privacy.html
 test -s ~/tallyfoot/site/support.html
@@ -36,36 +48,35 @@ REMOTE
 
 echo "== verify https://$domain via $ip"
 fail=0
-fetch() {
-  curl -s -o /dev/null -w '%{http_code}' --max-time 20 --resolve "$domain:443:$ip" "https://$domain$1"
+get() {
+  curl -s --max-time 20 --resolve "$domain:443:$ip" "$@" || true
 }
 check() {
   local code
-  code="$(fetch "$1")"
+  code="$(get -o /dev/null -w '%{http_code}' "https://$domain$1")"
   printf '%s %s\n' "$code" "$1"
   [ "$code" = "200" ] || fail=1
 }
+refs="$(for page in / /privacy /support; do
+  get "https://$domain$page" | grep -oE '(href|src)="[^"#]+"' | sed -E 's/^(href|src)="//; s/"$//' || true
+done | sort -u)"
 for path in / /privacy /support; do
   check "$path"
 done
-for page in / /privacy /support; do
-  curl -s --max-time 20 --resolve "$domain:443:$ip" "https://$domain$page" \
-    | grep -oE '(href|src)="[^"#]+"' | sed -E 's/^(href|src)="//; s/"$//' \
-    | while read -r ref; do
-        case "$ref" in
-          https://$domain/*) echo "${ref#https://$domain}" ;;
-          http*|mailto:*) ;;
-          /*) echo "$ref" ;;
-          ./) echo "/" ;;
-          *) echo "/$ref" ;;
-        esac
-      done
-done | sort -u > "${TMPDIR:-/tmp}/tallyfoot-refs.txt"
 while read -r ref; do
-  check "$ref"
-done < "${TMPDIR:-/tmp}/tallyfoot-refs.txt"
-grep -q "https://$domain/assets/img/og-1200x630.jpg" <(curl -s --max-time 20 --resolve "$domain:443:$ip" "https://$domain/") \
-  || { echo "og:image does not point at $domain"; fail=1; }
+  case "$ref" in
+    "") ;;
+    "https://$domain/"*) check "${ref#https://$domain}" ;;
+    http*|mailto:*) ;;
+    /*) check "$ref" ;;
+    ./) check / ;;
+    *) check "/$ref" ;;
+  esac
+done <<< "$refs"
+if ! get "https://$domain/" | grep -q "https://$domain/assets/img/og-1200x630.jpg"; then
+  echo "og:image does not point at $domain"
+  fail=1
+fi
 
 if [ "$fail" -ne 0 ]; then
   echo "deploy $sha: verification FAILED" >&2
