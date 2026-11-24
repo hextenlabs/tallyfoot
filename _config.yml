@@ -2,3 +2,5 @@ title: Tallyfoot
 theme: minima
 exclude:
   - DESIGN.md
+  - README.md
+  - deploy.sh
