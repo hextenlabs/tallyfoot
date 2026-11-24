@@ -4,7 +4,7 @@ The landing page at `index.html` with its stylesheet `assets/landing.css`. The P
 
 ## Direction
 
-Two hero directions were rendered at 1440x900: a navy page taken from the app icon background (#0F1520) and a cool light page. The light page won. The app's black screens read as devices against it, and the icon keeps its edge. On the navy page the screens and icon sank into the background.
+Dark page, by the owner's choice (2026-11-23: the light page was too bright). The page is a dark slate (#12161C), lighter than the app's pure-black screens, and every capture and the app icon carry a 1 px edge line (`--screen-edge`) so they keep their outline instead of sinking into the page.
 
 Source of truth for every claim: the App Store listing (`docs/store/listing.md` in the app repo). The page says nothing the listing does not.
 
@@ -12,12 +12,13 @@ Source of truth for every claim: the App Store listing (`docs/store/listing.md` 
 
 | Token | Hex | Role | Contrast on page |
 | --- | --- | --- | --- |
-| `--page` | #F6F8FB | Page background (60) | |
-| `--ink` | #111827 | Headings, body text, footer text (30, with the black app screens) | 16.7:1 |
-| `--muted` | #4B5563 | Lede, figure captions | 7.1:1 |
-| `--accent` | #0A6FA8 | Links and the focus ring only (10). It is the app ring blue (#40C8FF) deepened within its hue to pass AA | 5.1:1 |
-| `--rule` | #D5DBE3 | The one divider above the footer | decorative |
-| `--screen` | #000000 | Backdrop behind captures, so padded widgets and image edges stay black like the screens | |
+| `--page` | #12161C | Page background (60) | |
+| `--ink` | #F2F4F7 | Headings, body text, footer text (30) | 16.5:1 |
+| `--muted` | #A7B0BD | Lede, figure captions | 8.3:1 |
+| `--accent` | #5CC4F5 | Links and the focus ring only (10). It is the app ring blue (#40C8FF), lightened slightly within its hue | 9.2:1 |
+| `--rule` | #2A313B | The one divider above the footer | decorative |
+| `--screen` | #000000 | Backdrop behind captures, so image edges stay black like the screens | |
+| `--screen-edge` | #2E3640 | 1 px outline around captures and the app icon | 1.5:1, decorative |
 
 The app screenshots bring their own black. Nothing else on the page is black.
 
@@ -35,8 +36,8 @@ The app screenshots bring their own black. Nothing else on the page is black.
 - Spacing scale: 8, 16, 24, 32, 48, 80, 120 px. Tight inside a group, wider between groups, more space above a heading than below it.
 - Content width: 1120 px with 24 px side padding at every width.
 - `--r-control` 8 px: the focus outline around links and the badge. It is the only UI radius.
-- Image display widths: header icon 44 px, hero watch 340 px (260 px on phones), paired captures 240 px, Home Screen widget 220 px, App Store badge 150x50 px (Apple's 120x40 badge scaled evenly).
-- Radius follows the hardware, not a UI token: watch captures 19% of width, iPhone captures 12.5% of width, the Home Screen widget 13%, the rectangular Lock Screen widget 7% / 16%, the circular Lock Screen widget a full circle, the app icon 22.5%. The App Store badge keeps Apple's own shape.
+- Image display widths: header icon 44 px, hero watch 340 px (260 px on phones), paired captures 240 px, App Store badge 150x50 px (Apple's 120x40 badge scaled evenly).
+- Radius follows the hardware, not a UI token: watch captures 19% of width, iPhone captures 12.5% of width, the app icon 22.5%. The App Store badge keeps Apple's own shape.
 
 ## States
 
@@ -46,16 +47,16 @@ The app screenshots bring their own black. Nothing else on the page is black.
 
 ## Bans and their replacements
 
-- No gradients, glows, shadows or decorative backgrounds. Depth comes from the app's black screens on the light page.
+- No gradients, glows, soft shadows or decorative backgrounds. Depth comes from the app's black screens on the slate page; the only line around them is the 1 px edge.
 - No cards or boxed sections. Sections are separated by space alone, 120 px on desktop and 80 px on phones.
-- No identical section layouts. The hero and watch-face sections are split columns facing opposite ways, history is a centred stack, widgets are a split with a cluster of three images, privacy and the closing call are single text columns.
+- No identical section layouts. The hero and watch-face sections are split columns facing opposite ways, history is a centred stack, widgets, privacy and the closing call are single text columns. Widgets have no images: only renders existed, not device captures.
 - No icons, emoji, eyebrow labels, pill chips or numbered sections. Headings stand alone; the only images are real captures, the app icon and Apple's badge.
 - No Inter, serif display or monospace. Everything is the system UI stack.
 - No mock-ups or recoloured captures. Captures are resized, compressed and corner-clipped only. No invented device frames, Home Screens or Lock Screens.
 - No hype words, invented figures or testimonials. Copy restates the listing in plain sentences.
 - No duplicate navigation. The header carries only the name; Privacy and Support live in the footer and in the privacy section's text.
 - No motion. Nothing animates.
-- No dark mode. The captures are black; on a dark page they lose their edges.
+- One theme only, dark. No light/dark switch.
 
 ## Copy
 

@@ -1,10 +1,11 @@
 :root {
-  --page: #F6F8FB;
-  --ink: #111827;
-  --muted: #4B5563;
-  --accent: #0A6FA8;
-  --rule: #D5DBE3;
+  --page: #12161C;
+  --ink: #F2F4F7;
+  --muted: #A7B0BD;
+  --accent: #5CC4F5;
+  --rule: #2A313B;
   --screen: #000000;
+  --screen-edge: #2E3640;
   --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --s1: 8px;
   --s2: 16px;
@@ -142,6 +143,7 @@ main > section,
   width: 44px;
   height: 44px;
   border-radius: 22.5%;
+  box-shadow: 0 0 0 1px var(--screen-edge);
 }
 
 .brand:hover span {
@@ -163,6 +165,7 @@ main > section,
 .shot {
   width: 100%;
   background: var(--screen);
+  box-shadow: 0 0 0 1px var(--screen-edge);
 }
 
 .shot.watch {
