@@ -17,6 +17,7 @@ Source of truth for every claim: the App Store listing (`docs/store/listing.md` 
 | `--muted` | #4B5563 | Lede, figure captions | 7.1:1 |
 | `--accent` | #0A6FA8 | Links and the focus ring only (10). It is the app ring blue (#40C8FF) deepened within its hue to pass AA | 5.1:1 |
 | `--rule` | #D5DBE3 | The one divider above the footer | decorative |
+| `--screen` | #000000 | Backdrop behind captures, so padded widgets and image edges stay black like the screens | |
 
 The app screenshots bring their own black. Nothing else on the page is black.
 
@@ -26,13 +27,16 @@ The app screenshots bring their own black. Nothing else on the page is black.
 - h1: 56/1.08, weight 700, tracking -0.02em; 38 px below 720 px wide.
 - h2: 36/1.15, weight 700, tracking -0.01em; 28 px below 720 px wide.
 - Body: 18/1.55, weight 400. Captions and footer: 16/1.45. Nothing smaller than 16 px.
+- Tokens: `--t-h1` 56, `--t-h1-sm` 38, `--t-h2` 36, `--t-h2-sm` 28, `--t-lede` 20 (hero lede and the header name), `--t-body` 18, `--t-small` 16.
 - Paragraphs stop at 34em (about 65 characters). Headings use `text-wrap: balance`, paragraphs `text-wrap: pretty`.
 
 ## Spacing and radius
 
 - Spacing scale: 8, 16, 24, 32, 48, 80, 120 px. Tight inside a group, wider between groups, more space above a heading than below it.
 - Content width: 1120 px with 24 px side padding at every width.
-- Radius follows the hardware, not a UI token: watch captures 19% of width, iPhone captures 12.5% of width, the Home Screen widget 13%, the circular Lock Screen widget a full circle. The App Store badge keeps Apple's own shape.
+- `--r-control` 8 px: the focus outline around links and the badge. It is the only UI radius.
+- Image display widths: header icon 44 px, hero watch 340 px (260 px on phones), paired captures 240 px, Home Screen widget 220 px, App Store badge 150x50 px (Apple's 120x40 badge scaled evenly).
+- Radius follows the hardware, not a UI token: watch captures 19% of width, iPhone captures 12.5% of width, the Home Screen widget 13%, the rectangular Lock Screen widget 7% / 16%, the circular Lock Screen widget a full circle, the app icon 22.5%. The App Store badge keeps Apple's own shape.
 
 ## States
 
@@ -65,13 +69,13 @@ Written here first, then built.
 
 **Lede:** Tallyfoot's ring fills as you walk, with your step count in the center. It's free, with no accounts, ads, tracking or in-app purchases, and it works on iPhone alone too.
 
-**A complication for your watch face.** Add Tallyfoot as a complication to a compatible face, such as Modular Duo or X-Large. Tinted faces draw the ring in the system tint. Open the app on your watch for a larger ring with your goal and streak. Turn on notifications to get one tap on your wrist when you reach your goal.
+**A complication for your watch face.** Add Tallyfoot as a complication to a compatible face, such as Modular Duo or X-Large. Tinted faces draw the ring in the system tint. The Tallyfoot watch app shows your ring too. Turn on notifications to get one tap on your wrist when you reach your goal.
 
 **Streaks with room for rest.** Six goal days in a row earn you a rest day. You can hold one at a time, and it protects your streak from a missed day. Mark a sick day on any of the last 7 days in your history, or set weekly days off in Settings. Neither breaks your streak.
 
 **History against each day's goal.** See the last 7 days on Apple Watch, and 7 or 30 days on iPhone. Each day is measured against that day's goal.
 
-**Home Screen and Lock Screen widgets.** Put your ring on your iPhone Home Screen or Lock Screen. Set your daily goal and ring color in the iPhone app. Lock Screen widgets use the system tint.
+**Home Screen and Lock Screen widgets.** Put your ring on your iPhone Home Screen or Lock Screen. Set your daily goal and app ring color in the iPhone app. Lock Screen widgets use the system tint.
 
 **Your steps stay on your devices.** Tallyfoot reads steps from Apple Health and your devices' motion sensors. It syncs between your own iPhone and Apple Watch and sends no data to the developer. Details are in the Privacy Policy. For help, see Support.
 

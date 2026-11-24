@@ -4,6 +4,7 @@
   --muted: #4B5563;
   --accent: #0A6FA8;
   --rule: #D5DBE3;
+  --screen: #000000;
   --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --s1: 8px;
   --s2: 16px;
@@ -14,6 +15,14 @@
   --s7: 120px;
   --width: 1120px;
   --gutter: 24px;
+  --t-h1: 56px;
+  --t-h1-sm: 38px;
+  --t-h2: 36px;
+  --t-h2-sm: 28px;
+  --t-lede: 20px;
+  --t-body: 18px;
+  --t-small: 16px;
+  --r-control: 8px;
 }
 
 *,
@@ -32,7 +41,7 @@ body {
   background: var(--page);
   color: var(--ink);
   font-family: var(--font);
-  font-size: 18px;
+  font-size: var(--t-body);
   line-height: 1.55;
 }
 
@@ -56,7 +65,7 @@ a:hover {
 a:focus-visible {
   outline: 3px solid var(--accent);
   outline-offset: 3px;
-  border-radius: 4px;
+  border-radius: var(--r-control);
 }
 
 h1,
@@ -67,13 +76,13 @@ h2 {
 }
 
 h1 {
-  font-size: 56px;
+  font-size: var(--t-h1);
   line-height: 1.08;
   letter-spacing: -0.02em;
 }
 
 h2 {
-  font-size: 36px;
+  font-size: var(--t-h2);
   line-height: 1.15;
   letter-spacing: -0.01em;
 }
@@ -100,7 +109,7 @@ figure {
 figcaption {
   margin-top: var(--s2);
   color: var(--muted);
-  font-size: 16px;
+  font-size: var(--t-small);
   line-height: 1.45;
   text-align: center;
 }
@@ -122,9 +131,9 @@ main > section,
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--s2);
   color: var(--ink);
-  font-size: 20px;
+  font-size: var(--t-lede);
   font-weight: 700;
   text-decoration: none;
 }
@@ -132,7 +141,7 @@ main > section,
 .brand img {
   width: 44px;
   height: 44px;
-  border-radius: 10px;
+  border-radius: 22.5%;
 }
 
 .brand:hover span {
@@ -143,7 +152,7 @@ main > section,
 
 .badge {
   display: inline-block;
-  border-radius: 8px;
+  border-radius: var(--r-control);
 }
 
 .badge img {
@@ -153,7 +162,7 @@ main > section,
 
 .shot {
   width: 100%;
-  background: #000;
+  background: var(--screen);
 }
 
 .shot.watch {
@@ -174,7 +183,7 @@ main > section,
 
 .hero .lede {
   color: var(--muted);
-  font-size: 20px;
+  font-size: var(--t-lede);
 }
 
 .hero .badge {
@@ -254,7 +263,7 @@ main > section + section {
 
 .shot.widget-rect {
   padding: 3% 4%;
-  border-radius: 18px;
+  border-radius: 7% / 16%;
 }
 
 .prose h2 {
@@ -278,7 +287,7 @@ main > section + section {
   padding-top: var(--s4);
   padding-bottom: var(--s5);
   border-top: 1px solid var(--rule);
-  font-size: 16px;
+  font-size: var(--t-small);
 }
 
 .site-footer nav {
@@ -303,11 +312,11 @@ main > section + section {
 
 @media (max-width: 719px) {
   h1 {
-    font-size: 38px;
+    font-size: var(--t-h1-sm);
   }
 
   h2 {
-    font-size: 28px;
+    font-size: var(--t-h2-sm);
   }
 
   .hero {
@@ -315,7 +324,7 @@ main > section + section {
   }
 
   .hero .lede {
-    font-size: 18px;
+    font-size: var(--t-body);
   }
 
   .hero-watch {
