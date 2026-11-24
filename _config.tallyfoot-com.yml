@@ -1,3 +1,11 @@
 url: https://tallyfoot.com
 baseurl: ""
 description: Tallyfoot privacy policy and support
+sass:
+  style: compressed
+defaults:
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: page
