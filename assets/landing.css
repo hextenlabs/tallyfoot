@@ -267,7 +267,135 @@ main > section + section {
 
 .site-footer nav {
   display: flex;
+  flex-wrap: wrap;
   gap: var(--s3);
+}
+
+.page-intro {
+  padding-top: var(--s5);
+}
+
+.page-intro .lede {
+  color: var(--muted);
+  font-size: var(--t-lede);
+}
+
+.page-intro .cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s4);
+  margin-top: var(--s4);
+}
+
+.prose ul,
+.prose ol {
+  margin: var(--s3) 0 0;
+  padding-left: var(--s4);
+  max-width: 38em;
+}
+
+.prose li + li {
+  margin-top: var(--s2);
+}
+
+.facts {
+  margin: var(--s4) 0 0;
+  max-width: 46em;
+  border-top: 1px solid var(--rule);
+}
+
+.facts > div {
+  display: grid;
+  grid-template-columns: minmax(140px, 12em) minmax(0, 1fr);
+  gap: var(--s3);
+  padding: var(--s2) 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.facts dt {
+  color: var(--muted);
+  font-size: var(--t-small);
+}
+
+.facts dd {
+  margin: 0;
+}
+
+.press-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--s5) var(--s4);
+  margin-top: var(--s4);
+  align-items: end;
+}
+
+.press-grid figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.press-grid .shot.watch {
+  max-width: 220px;
+}
+
+.press-grid .shot.phone {
+  max-width: 220px;
+}
+
+.press-grid .press-icon {
+  width: 180px;
+  height: 180px;
+  border-radius: 22.5%;
+  box-shadow: 0 0 0 1px var(--screen-edge);
+}
+
+.press-grid .press-hero {
+  width: 100%;
+  border-radius: var(--r-control);
+  box-shadow: 0 0 0 1px var(--screen-edge);
+}
+
+.press-grid figcaption {
+  text-align: center;
+}
+
+.press-meta {
+  display: block;
+  margin-top: var(--s1);
+  color: var(--muted);
+  font-size: var(--t-small);
+}
+
+.table-wrap {
+  margin-top: var(--s4);
+  overflow-x: auto;
+}
+
+.compare {
+  width: 100%;
+  max-width: 54em;
+  border-collapse: collapse;
+  font-size: var(--t-small);
+  line-height: 1.5;
+}
+
+.compare th,
+.compare td {
+  padding: var(--s2) var(--s3) var(--s2) 0;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--rule);
+}
+
+.compare th {
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.compare tbody th {
+  color: var(--ink);
 }
 
 @media (max-width: 959px) {
@@ -318,5 +446,10 @@ main > section + section {
     flex-direction: column;
     align-items: flex-start;
     margin-top: var(--s6);
+  }
+
+  .facts > div {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--s1);
   }
 }

@@ -57,10 +57,10 @@ check() {
   printf '%s %s\n' "$code" "$1"
   [ "$code" = "200" ] || fail=1
 }
-refs="$(for page in / /privacy /support; do
+refs="$(for page in / /privacy /support /press /apple-watch-step-counter; do
   get "https://$domain$page" | grep -oE '(href|src)="[^"#]+"' | sed -E 's/^(href|src)="//; s/"$//' || true
 done | sort -u)"
-for path in / /privacy /support; do
+for path in / /privacy /support /press /apple-watch-step-counter /robots.txt /sitemap.xml; do
   check "$path"
 done
 while read -r ref; do

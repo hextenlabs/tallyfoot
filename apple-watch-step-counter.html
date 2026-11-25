@@ -1,0 +1,150 @@
+---
+title: How to put a step counter on your Apple Watch face
+layout: null
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to put a step counter on your Apple Watch face — Tallyfoot</title>
+<meta name="description" content="How to add a daily step count complication to your Apple Watch face, why watch-face step counts refresh every ~15 minutes, and free apps with no subscription.">
+<link rel="canonical" href="https://tallyfoot.com/apple-watch-step-counter">
+<meta name="apple-itunes-app" content="app-id=6830231859">
+<meta name="theme-color" content="#12161C">
+<meta name="color-scheme" content="dark">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Tallyfoot">
+<meta property="og:title" content="How to put a step counter on your Apple Watch face">
+<meta property="og:description" content="Step-by-step guide to adding a step goal complication to your Apple Watch face, why refreshes lag slightly, and free apps without subscriptions.">
+<meta property="og:url" content="{{ "/apple-watch-step-counter" | absolute_url }}">
+<meta property="og:image" content="{{ "/assets/img/og-1200x630.jpg" | absolute_url }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to put a step counter on your Apple Watch face">
+<meta name="twitter:description" content="Step-by-step guide to adding a step goal complication to your Apple Watch face, why refreshes lag slightly, and free apps without subscriptions.">
+<meta name="twitter:image" content="{{ "/assets/img/og-1200x630.jpg" | absolute_url }}">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="assets/landing.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to put a step counter on your Apple Watch face",
+  "description": "How to add a daily step count complication to your Apple Watch face, why watch-face step counts refresh every ~15 minutes, and free apps with no subscription.",
+  "url": "https://tallyfoot.com/apple-watch-step-counter",
+  "image": "{{ '/assets/img/og-1200x630.jpg' | absolute_url }}",
+  "author": {
+    "@type": "Person",
+    "name": "Jeremy Daughhetee"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Jeremy Daughhetee"
+  }
+}
+</script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="./">
+    <img src="assets/img/icon-96.webp" width="96" height="96" alt="">
+    <span>Tallyfoot</span>
+  </a>
+</header>
+
+<main>
+  <section class="page-intro">
+    <h1>How to put a step counter on your Apple Watch face</h1>
+    <p class="lede">Apple Watch tracks your steps all day in Apple Health, but Apple's built-in Activity complication shows Move, Exercise, and Stand rings — not your step count. To see steps on your watch face, you need a third-party complication.</p>
+  </section>
+
+  <section class="split" aria-labelledby="steps-heading">
+    <div class="copy prose">
+      <h2 id="steps-heading">Add a step complication to a watch face</h2>
+      <ol>
+        <li>Install a watchOS step app that offers complications (such as <a href="https://apps.apple.com/app/apple-store/id6830231859?pt=271672&amp;ct=guide-watch-face&amp;mt=8">Tallyfoot</a>) and grant read access to Apple Health Steps and Motion.</li>
+        <li>Press and hold your current Apple Watch face, then tap <strong>Edit</strong>.</li>
+        <li>Swipe left to the <strong>Complications</strong> screen and tap a compatible slot (faces like <strong>Modular Duo</strong> or <strong>X-Large</strong> give a step ring the most room).</li>
+        <li>Scroll to the app name, pick the step complication layout you want, and press the Digital Crown to save.</li>
+      </ol>
+      <p>If your watch face uses a monochrome or tinted style, watchOS draws every complication in the face's tint color. Full-color faces use the app's own ring color.</p>
+    </div>
+    <div class="pair">
+      <figure>
+        <img class="shot watch" src="assets/img/watch-face-x-large-416.webp" width="416" height="496" loading="lazy" alt="An Apple Watch X-Large face with the Tallyfoot step ring at 8,412 steps.">
+        <figcaption>X-Large face</figcaption>
+      </figure>
+      <figure>
+        <img class="shot watch" src="assets/img/watch-face-modular-duo-416.webp" width="416" height="496" loading="lazy" alt="A Modular Duo face showing 8,412 of 10,000 steps and a 21-day streak.">
+        <figcaption>Modular Duo face</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="prose" aria-labelledby="refresh-heading">
+    <h2 id="refresh-heading">Why watch-face step counts lag slightly behind the app</h2>
+    <p>This catches almost every new Apple Watch owner by surprise: no third-party complication can tick upward on every single step.</p>
+    <p>To preserve battery life, watchOS enforces a daily background refresh budget on every watch-face widget. Most step complications ask watchOS for a refresh roughly every <strong>15 minutes</strong>. Whenever you want the exact live total right now, tap the complication to open the watch app — opening the app reads your latest total immediately and refreshes the watch face too.</p>
+  </section>
+
+  <section class="prose" aria-labelledby="compare-heading">
+    <h2 id="compare-heading">Free Apple Watch step complications (no forced subscription)</h2>
+    <p>Many step trackers on the App Store push weekly or yearly subscriptions just to put a number on your wrist. Three well-regarded options let you keep a step count on your watch face for free:</p>
+    <div class="table-wrap">
+      <table class="compare">
+        <thead>
+          <tr>
+            <th scope="col">App</th>
+            <th scope="col">Pricing</th>
+            <th scope="col">Best for</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Pedometer++</th>
+            <td>Free core app; optional paid tier for extras</td>
+            <td>Long-running favorite with many complication styles, distance/floor charts, and extra workout features.</td>
+          </tr>
+          <tr>
+            <th scope="row">Duffy</th>
+            <td>Free with optional tip jar</td>
+            <td>Minimalists who want a clean, lightweight step number and goal bar without extra clutter.</td>
+          </tr>
+          <tr>
+            <th scope="row"><a href="./">Tallyfoot</a></th>
+            <td>Free — no accounts, ads, tracking, or IAPs</td>
+            <td>People who want a dedicated daily step ring on their watch face plus streaks with built-in rest days, sick days, and weekly days off.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="prose" aria-labelledby="streaks-heading">
+    <h2 id="streaks-heading">Keeping a step streak without losing it to a sick day</h2>
+    <p>One frustration with standard step goals and Apple's native Activity rings is that one day in bed with a cold resets a multi-week streak to zero. In Tallyfoot, six consecutive goal days earn a banked rest day that automatically protects your streak if you miss a day. You can also mark a sick day on any of the last 7 days or set weekly days off in Settings — neither breaks your streak.</p>
+    <p>On first launch, Tallyfoot reads your existing step history from Apple Health so your current streak carries over automatically. All data stays on your own devices and never leaves for an external server.</p>
+  </section>
+
+  <section class="closing" aria-labelledby="closing-heading">
+    <h2 id="closing-heading">Try Tallyfoot free on the App Store</h2>
+    <a class="badge" href="https://apps.apple.com/app/apple-store/id6830231859?pt=271672&amp;ct=guide-watch-face&amp;mt=8">
+      <img src="assets/img/app-store-badge.svg" width="120" height="40" alt="Download on the App Store">
+    </a>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>© 2026 Jeremy Daughhetee</p>
+  <nav aria-label="Site links">
+    <a href="./">Home</a>
+    <a href="press">Press</a>
+    <a href="privacy">Privacy Policy</a>
+    <a href="support">Support</a>
+  </nav>
+</footer>
+</body>
+</html>

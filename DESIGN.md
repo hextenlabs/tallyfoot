@@ -82,4 +82,8 @@ Written here first, then built.
 
 **Closing:** Tallyfoot is free on the App Store. (Heading and badge only.)
 
-**Footer:** © 2026 Jeremy Daughhetee. Privacy Policy. Support.
+**Footer:** © 2026 Jeremy Daughhetee. Watch Face Guide. Press. Privacy Policy. Support.
+
+## Secondary static pages
+
+`press.html` (`/press`) and `apple-watch-step-counter.html` (`/apple-watch-step-counter`) reuse `assets/landing.css` with `layout: null` and follow the same dark palette, typography, spacing, and no-card / no-JS rules. High-resolution press captures and the downloadable zip live in `assets/press/`.
