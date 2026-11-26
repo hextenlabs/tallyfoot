@@ -453,3 +453,12 @@ main > section + section {
     gap: var(--s1);
   }
 }
+
+.guide-body > * + h2 {
+  margin-top: var(--s5);
+}
+
+.guide-body > ol + p,
+.guide-body > ul + p {
+  margin-top: var(--s3);
+}

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ page.title }} — Tallyfoot</title>
 <meta name="description" content="{{ page.description | escape }}">
-<link rel="canonical" href="{{ page.url | absolute_url }}">
+<link rel="canonical" href="https://tallyfoot.com{{ page.url }}">
 <meta name="apple-itunes-app" content="app-id=6830231859">
 <meta name="theme-color" content="#12161C">
 <meta name="color-scheme" content="dark">
@@ -32,7 +32,7 @@
   "@type": "Article",
   "headline": {{ page.title | jsonify }},
   "description": {{ page.description | jsonify }},
-  "url": {{ page.url | absolute_url | jsonify }},
+  "url": {{ page.url | prepend: "https://tallyfoot.com" | jsonify }},
   "image": {{ "/assets/img/og-1200x630.jpg" | absolute_url | jsonify }},
   "datePublished": {{ page.date | date: "%Y-%m-%d" | jsonify }},
   "author": { "@type": "Person", "name": "Jeremy Daughhetee" },
@@ -54,7 +54,7 @@
     <p class="lede">{{ page.lede }}</p>
   </section>
 
-  <section class="prose">
+  <section class="prose guide-body">
 {{ content | replace: "STORE_URL", store_html }}
   </section>
 

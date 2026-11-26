@@ -3,7 +3,7 @@ layout: guide
 title: Why do Apple Watch and iPhone show different step counts?
 description: Apple Watch and iPhone count steps separately. Apple Health merges the two instead of adding them, using a priority list you can check and reorder.
 lede: Apple Watch and iPhone each count steps with their own sensors, so their numbers differ. Apple Health does not add the two together but merges them into one total, and where both devices recorded the same steps, the source ranked higher in the Data Sources and Access list for Steps takes priority.
-ct: guide-apple-watch-vs-iphone-st
+ct: guide-watch-vs-iphone
 date: 2026-11-25
 sources:
   - https://support.apple.com/en-us/108779
@@ -57,7 +57,7 @@ They also do not share data instantly. The same Apple engineer who described de-
 - On iPhone, open the Fitness app, tap Summary, then tap the Step Count area.
 - In the Health app, tap Browse, then Activity, then Steps. This is the merged total.
 
-These screens do not all draw on the same sources. Answering a developer whose app's steps appeared in Health but not in Fitness, an Apple engineer [wrote](https://developer.apple.com/forums/thread/804047) that the Fitness app only shows data from Apple Watch, while the Health app shows data from all sources. If an app or another tracker also writes steps on your phone, Health can count steps that Fitness does not.
+These screens do not all draw on the same sources. A developer whose app wrote steps to Health found them in the Health app but not in Fitness, and an Apple engineer [answered](https://developer.apple.com/forums/thread/804047) that this is expected: Health shows data from all sources, and Fitness does not show steps written by other apps. If an app or another tracker also writes steps on your phone, Health can count steps that Fitness does not.
 
 ## If the Health total looks wrong
 

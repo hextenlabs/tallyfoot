@@ -115,18 +115,23 @@ def cmd_check(args: argparse.Namespace) -> int:
     return 1 if failed else 0
 
 
-def ct_for(slug: str) -> str:
-    return ("guide-" + slug)[:30].rstrip("-")
+def ct_for(slug: str, ct: str | None = None) -> str:
+    if ct:
+        return ct
+    token = "guide-" + slug
+    if len(token) > 30:
+        raise SystemExit(f"{token!r} is over 30 chars; pass --ct guide-<short-name>")
+    return token
 
 
-def scaffold(slug: str, title: str) -> str:
+def scaffold(slug: str, title: str, ct: str | None) -> str:
     return (
         "---\n"
         "layout: guide\n"
         f"title: {title}\n"
         "description: \n"
         "lede: \n"
-        f"ct: {ct_for(slug)}\n"
+        f"ct: {ct_for(slug, ct)}\n"
         f"date: {datetime.date.today().isoformat()}\n"
         "sources:\n"
         "  - https://\n"
@@ -145,7 +150,7 @@ def cmd_new(args: argparse.Namespace) -> int:
         print(f"{path} already exists")
         return 1
     GUIDES.mkdir(exist_ok=True)
-    path.write_text(scaffold(args.slug, args.title), encoding="utf-8", newline="\n")
+    path.write_text(scaffold(args.slug, args.title, args.ct), encoding="utf-8", newline="\n")
     print(path)
     return 0
 
@@ -207,7 +212,7 @@ layout: guide
 title: <the question, phrased as a search would phrase it, under 65 characters, no double quotes>
 description: <50-160 characters, no double quotes>
 lede: <one or two sentences that answer the question, no double quotes>
-ct: {ct_for(args.slug)}
+ct: {ct_for(args.slug, args.ct)}
 date: {today}
 sources:
   - <each https URL you fetched and relied on, one per line>
@@ -239,11 +244,13 @@ def main() -> int:
     p = sub.add_parser("new", help="scaffold an empty guide")
     p.add_argument("slug")
     p.add_argument("--title", required=True)
+    p.add_argument("--ct", help="campaign token, guide-<name>, at most 30 chars")
     p.set_defaults(func=cmd_new)
     p = sub.add_parser("draft", help="have claude research and write a guide")
     p.add_argument("slug")
     p.add_argument("--topic", required=True)
     p.add_argument("--force", action="store_true")
+    p.add_argument("--ct", help="campaign token, guide-<name>, at most 30 chars")
     p.add_argument("--timeout", type=int, default=1200)
     p.set_defaults(func=cmd_draft)
     p = sub.add_parser("check", help="lint guides (all of them by default)")

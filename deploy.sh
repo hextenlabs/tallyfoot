@@ -9,13 +9,16 @@ mode=deploy
 case "${1:-}" in
   "") ;;
   --build-only) mode=preview ;;
-  *) echo "usage: $0 [--build-only]" >&2; exit 2 ;;
+  --verify-only) mode=verify ;;
+  *) echo "usage: $0 [--build-only | --verify-only]" >&2; exit 2 ;;
 esac
 
 cd "$(dirname "$0")"
 sha="$(git rev-parse --short HEAD)"
 
-if [ "$mode" = preview ]; then
+if [ "$mode" = verify ]; then
+  :
+elif [ "$mode" = preview ]; then
   src=preview-src
   out=preview-site
   echo "== upload the working tree (tracked + untracked, not ignored) to $host"
@@ -40,6 +43,7 @@ else
   "
 fi
 
+if [ "$mode" != verify ]; then
 echo "== build on $host"
 ssh "$host" bash -s -- "$src" "$out" <<'REMOTE'
 set -euo pipefail
@@ -80,6 +84,7 @@ fi
 
 echo "== publish on $host"
 ssh "$host" "rsync -a --delete ~/tallyfoot/site/ /var/www/tallyfoot/web/"
+fi
 
 echo "== verify https://$domain via $ip"
 fail=0
@@ -124,7 +129,7 @@ if ! get "https://$domain/" | grep -q "https://$domain/assets/img/og-1200x630.jp
 fi
 
 if [ "$fail" -ne 0 ]; then
-  echo "deploy $sha: verification FAILED" >&2
+  echo "$mode $sha: verification FAILED" >&2
   exit 1
 fi
-echo "deploy $sha: ok"
+echo "$mode $sha: ok"

@@ -10,3 +10,9 @@ collections:
   guides:
     output: true
     permalink: /guides/:name
+header_pages:
+  - apple-watch-step-counter.html
+  - index.html
+  - press.html
+  - privacy.md
+  - support.md
