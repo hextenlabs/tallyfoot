@@ -3,3 +3,4 @@
 *.local.*
 marketing/
 _preview/
+__pycache__/
