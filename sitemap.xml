@@ -10,6 +10,15 @@ layout: null
     <loc>{{ "/apple-watch-step-counter" | absolute_url }}</loc>
   </url>
   <url>
+    <loc>{{ "/guides/" | absolute_url }}</loc>
+  </url>
+{%- for g in site.guides %}
+  <url>
+    <loc>{{ g.url | absolute_url }}</loc>
+    <lastmod>{{ g.date | date: "%Y-%m-%d" }}</lastmod>
+  </url>
+{%- endfor %}
+  <url>
     <loc>{{ "/press" | absolute_url }}</loc>
   </url>
   <url>

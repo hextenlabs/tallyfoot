@@ -1,0 +1,14 @@
+---
+layout: guide
+title: Apple Watch step guides
+description: Plain guides to tracking daily steps on Apple Watch and iPhone, from the developer of Tallyfoot.
+lede: Plain answers to the questions people ask about step counts on Apple Watch and iPhone.
+ct: guides-index
+---
+<ul>
+  <li><a href="{{ "/apple-watch-step-counter" | relative_url }}">How to put a step counter on your Apple Watch face</a></li>
+{%- assign guides = site.guides | sort: "date" | reverse %}
+{%- for g in guides %}
+  <li><a href="{{ g.url | relative_url }}">{{ g.title }}</a></li>
+{%- endfor %}
+</ul>

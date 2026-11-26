@@ -5,3 +5,8 @@ exclude:
   - README.md
   - deploy.sh
   - marketing
+  - tools
+collections:
+  guides:
+    output: true
+    permalink: /guides/:name
